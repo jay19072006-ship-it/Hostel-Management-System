@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Management</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+<nav class="navbar">
+    <h2>Hostel Management System</h2>
+
+    <div class="nav-links">
+        <a href="{{ url_for('home') }}">Dashboard</a>
+        <a href="{{ url_for('admission') }}">Student Admission</a>
+        <a href="{{ url_for('view_students') }}">Student Records</a>
+        <a href="{{ url_for('room_management') }}">Room Management</a>
+    </div>
+</nav>
+
+    <div class="container">
+        <h1>Room Management</h1>
+
+        <p>Total Rooms: {{ rooms|length }}</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for room in rooms %}
+                <tr>
+                    <td>{{ room.room_number }}</td>
+                    <td>
+                        {% if room.occupied %}
+                            Occupied
+                        {% else %}
+                            Vacant
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p><a href="{{ url_for('home') }}">Back to Dashboard</a></p>
+    </div>
+</body>
+</html>

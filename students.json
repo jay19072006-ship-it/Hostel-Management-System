@@ -1,0 +1,79 @@
+[
+    {
+        "id": "AB22",
+        "name": "tushar",
+        "age": 22,
+        "gender": "Male",
+        "phone": "8837373366",
+        "course": "cse",
+        "college": "dyp",
+        "address": "102",
+        "room_number": 102
+    },
+    {
+        "id": "AB123",
+        "name": "SAHIL KALEBRE",
+        "age": 20,
+        "gender": "M",
+        "phone": "8764544534",
+        "course": "BTECH",
+        "college": "DYP",
+        "address": "KOLHAPUR",
+        "room_number": 107
+    },
+    {
+        "id": "ABC334",
+        "name": "JIVAN MUSALE",
+        "age": 21,
+        "gender": "Male",
+        "phone": "8725633456",
+        "course": "BTECH",
+        "college": "DYP",
+        "address": "KOLHAPUR",
+        "room_number": 118
+    },
+    {
+        "id": "ABC435",
+        "name": "SHIVAM KADAM",
+        "age": 19,
+        "gender": "M",
+        "phone": "6543456765",
+        "course": "DIPLOMA",
+        "college": "KIT",
+        "address": "SATARA",
+        "room_number": 105
+    },
+    {
+        "id": "AB166",
+        "name": "deepak bhosale",
+        "age": 20,
+        "gender": "M",
+        "phone": "5643526736",
+        "course": "BTECH",
+        "college": "Kit",
+        "address": "kolhapur",
+        "room_number": 101
+    },
+    {
+        "id": "agr89",
+        "name": "Nihal",
+        "age": 23,
+        "gender": "M",
+        "phone": "8725633456",
+        "course": "BTECH",
+        "college": "dyp",
+        "address": "kolhapur",
+        "room_number": 112
+    },
+    {
+        "id": "234",
+        "name": "jay",
+        "age": 24,
+        "gender": "Male",
+        "phone": "8725633456",
+        "course": "BTECH",
+        "college": "dyp",
+        "address": "kolhapir",
+        "room_number": 108
+    }
+]

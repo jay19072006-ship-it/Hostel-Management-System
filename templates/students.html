@@ -1,0 +1,125 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Student Records | HostelPro{% endblock %}
+{% block page_heading %}Student Records{% endblock %}
+{% block page_subtitle %}View, search, edit, and manage registered hostel students.{% endblock %}
+
+{% block content %}
+<section class="panel records-panel">
+
+    <div class="records-toolbar">
+        <div>
+            <h2>All Students</h2>
+            <p>{{ students|length }} matching record(s)</p>
+        </div>
+        <a class="primary-button" href="{{ url_for('admission') }}">
+            <i class="fa-solid fa-plus"></i> Add Student
+        </a>
+    </div>
+
+    <form class="search-form" method="GET"
+          action="{{ url_for('view_students') }}">
+        <div class="search-input-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" name="q" value="{{ query }}"
+                   placeholder="Search by student ID or name...">
+        </div>
+
+        <button class="primary-button" type="submit">Search</button>
+
+        {% if query %}
+        <a class="secondary-button"
+           href="{{ url_for('view_students') }}">Clear</a>
+        {% endif %}
+    </form>
+
+    <div class="table-wrap">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>STUDENT</th>
+                    <th>AGE / GENDER</th>
+                    <th>PHONE</th>
+                    <th>COURSE</th>
+                    <th>COLLEGE</th>
+                    <th>ROOM</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>
+                        <div class="student-cell">
+                            <span class="student-avatar">
+                                {{ student.name[:1]|upper }}
+                            </span>
+                            <span>
+                                <strong>{{ student.name }}</strong>
+                                <small>{{ student.id }}</small>
+                            </span>
+                        </div>
+                    </td>
+
+                    <td>{{ student.age }} / {{ student.gender }}</td>
+                    <td>{{ student.phone }}</td>
+                    <td>{{ student.course }}</td>
+                    <td>{{ student.college }}</td>
+                    <td>
+                        <span class="room-pill">
+                            Room {{ student.room_number }}
+                        </span>
+                    </td>
+
+                    <td>
+                        <div class="action-buttons">
+                            <a class="edit-button"
+                               href="{{ url_for('edit_student', student_id=student.id) }}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                Edit
+                            </a>
+
+                            <form method="POST"
+                                  action="{{ url_for('delete_student', student_id=student.id) }}"
+                                  onsubmit="return confirm('Delete this student and vacate their room?');">
+                                <button class="danger-button" type="submit">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+
+                {% else %}
+                <tr>
+                    <td colspan="7">
+                        <div class="empty-state">
+                            <span><i class="fa-solid fa-users"></i></span>
+                            <strong>No students found</strong>
+                            <p>
+                                {% if query %}
+                                    Try another name or student ID.
+                                {% else %}
+                                    Register your first student to see records here.
+                                {% endif %}
+                            </p>
+
+                            {% if not query %}
+                            <a class="primary-button"
+                               href="{{ url_for('admission') }}">
+                                Register Student
+                            </a>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

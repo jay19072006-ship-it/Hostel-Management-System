@@ -1,0 +1,109 @@
+
+{% extends "base.html" %}
+
+{% block title %}Edit Student | HostelPro{% endblock %}
+{% block page_heading %}Edit Student{% endblock %}
+{% block page_subtitle %}Update student information and save your changes.{% endblock %}
+
+{% block content %}
+<div class="page-intro">
+    <span class="intro-icon">
+        <i class="fa-solid fa-user-pen"></i>
+    </span>
+    <div>
+        <h2>Edit Student Details</h2>
+        <p>Student ID and room allocation are kept unchanged.</p>
+    </div>
+</div>
+
+<form method="POST" class="panel form-panel">
+
+    <div class="form-section-heading">
+        <i class="fa-solid fa-id-card"></i>
+        <div>
+            <h3>Student Information</h3>
+            <p>Student ID: {{ student.id }}</p>
+        </div>
+    </div>
+
+    <div class="form-grid">
+
+        <div class="field">
+            <label>Student ID</label>
+            <input value="{{ student.id }}" disabled>
+        </div>
+
+        <div class="field">
+            <label>Allocated Room</label>
+            <input value="Room {{ student.room_number }}" disabled>
+        </div>
+
+        <div class="field">
+            <label for="name">Full Name *</label>
+            <input id="name" name="name"
+                   value="{{ student.name }}" required>
+        </div>
+
+        <div class="field">
+            <label for="age">Age *</label>
+            <input id="age" name="age" type="number"
+                   min="15" max="60"
+                   value="{{ student.age }}" required>
+        </div>
+
+        <div class="field">
+            <label for="gender">Gender *</label>
+            <select id="gender" name="gender" required>
+                <option value="Male"
+                    {% if student.gender == 'Male' %}selected{% endif %}>
+                    Male
+                </option>
+                <option value="Female"
+                    {% if student.gender == 'Female' %}selected{% endif %}>
+                    Female
+                </option>
+                <option value="Other"
+                    {% if student.gender == 'Other' %}selected{% endif %}>
+                    Other
+                </option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="phone">Phone Number *</label>
+            <input id="phone" name="phone" type="tel"
+                   inputmode="numeric" pattern="[0-9]{10}"
+                   maxlength="10" value="{{ student.phone }}" required>
+        </div>
+
+        <div class="field">
+            <label for="course">Course *</label>
+            <input id="course" name="course"
+                   value="{{ student.course }}" required>
+        </div>
+
+        <div class="field">
+            <label for="college">College Name *</label>
+            <input id="college" name="college"
+                   value="{{ student.college }}" required>
+        </div>
+
+        <div class="field field-full">
+            <label for="address">Address *</label>
+            <textarea id="address" name="address"
+                      rows="3" required>{{ student.address }}</textarea>
+        </div>
+
+    </div>
+
+    <div class="form-actions">
+        <a class="secondary-button"
+           href="{{ url_for('view_students') }}">Cancel</a>
+
+        <button class="primary-button" type="submit">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Save Changes
+        </button>
+    </div>
+</form>
+{% endblock %}

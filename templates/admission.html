@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admission</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+<nav class="navbar">
+    <h2>Hostel Management System</h2>
+
+    <div class="nav-links">
+        <a href="{{ url_for('home') }}">Dashboard</a>
+        <a href="{{ url_for('admission') }}">Student Admission</a>
+        <a href="{{ url_for('view_students') }}">Student Records</a>
+        <a href="{{ url_for('room_management') }}">Room Management</a>
+    </div>
+</nav>
+
+
+<header>
+    <h1>Student Admission</h1>
+    <p>Hostel Management System</p>
+</header>
+
+<main>
+    <p><a href="{{ url_for('home') }}">← Back to Dashboard</a></p>
+
+    <h2>New Student Registration</h2>
+
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        <p class="message {{ category }}">{{ message }}</p>
+    {% endfor %}
+
+    <form method="POST" class="admission-form">
+
+        <label>Student ID</label>
+        <input type="text" name="student_id" required>
+
+        <label>Full Name</label>
+        <input type="text" name="name" required>
+
+        <label>Age</label>
+        <input type="number" name="age" min="15" max="60" required>
+
+        <label>Gender</label>
+        <select name="gender" required>
+            <option value="">Select gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+        </select>
+
+        <label>Phone Number</label>
+        <input type="tel" name="phone"
+               pattern="[0-9]{10}" maxlength="10" required>
+
+        <label>Course</label>
+        <input type="text" name="course" required>
+
+        <label>College Name</label>
+        <input type="text" name="college" required>
+
+        <label>Address</label>
+        <textarea name="address" required></textarea>
+
+        <label>Allocate Room</label>
+        <select name="room_number" required>
+            <option value="">Select a vacant room</option>
+            {% for room in vacant_rooms %}
+                <option value="{{ room.room_number }}">
+                    Room {{ room.room_number }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Register Student</button>
+    </form>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Management Dashboard</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="dashboard-page">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-building-user"></i>
+            <span>Hostel<span class="brand-highlight">Pro</span></span>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav class="side-links">
+            <a class="active" href="{{ url_for('home') }}">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{{ url_for('admission') }}">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Student Admission</span>
+            </a>
+
+            <a href="{{ url_for('view_students') }}">
+                <i class="fa-solid fa-users"></i>
+                <span>Student Records</span>
+            </a>
+
+            <a href="{{ url_for('room_management') }}">
+                <i class="fa-solid fa-bed"></i>
+                <span>Room Management</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="{{ url_for('logout') }}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <h2>Dashboard</h2>
+                <p>Welcome back, Admin!</p>
+            </div>
+
+            <div class="admin-profile">
+                <i class="fa-solid fa-circle-user"></i>
+                <span>Administrator</span>
+            </div>
+        </header>
+
+        <section class="welcome-banner">
+            <div>
+                <h1>Hostel Overview</h1>
+                <p>Manage students, rooms and hostel occupancy in one place.</p>
+            </div>
+            <i class="fa-solid fa-building"></i>
+        </section>
+
+        <section class="cards">
+            <div class="card students-card">
+                <div class="card-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <h3>Total Students</h3>
+                <p>{{ total_students }}</p>
+                <span class="card-note">Registered residents</span>
+            </div>
+
+            <div class="card rooms-card">
+                <div class="card-icon">
+                    <i class="fa-solid fa-bed"></i>
+                </div>
+                <h3>Total Rooms</h3>
+                <p>{{ total_rooms }}</p>
+                <span class="card-note">Available hostel capacity</span>
+            </div>
+
+            <div class="card occupied-card">
+                <div class="card-icon">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+                <h3>Occupied Rooms</h3>
+                <p>{{ occupied_rooms }}</p>
+                <span class="card-note">Currently allocated</span>
+            </div>
+
+            <div class="card vacant-card">
+                <div class="card-icon">
+                    <i class="fa-solid fa-door-open"></i>
+                </div>
+                <h3>Vacant Rooms</h3>
+                <p>{{ vacant_rooms }}</p>
+                <span class="card-note">Ready for admission</span>
+            </div>
+        </section>
+
+        <section class="quick-actions">
+            <h2>Quick Actions</h2>
+            <p>Choose a task to continue managing your hostel.</p>
+
+            <div class="action-grid">
+                <a href="{{ url_for('admission') }}" class="action-card">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Register Student</span>
+                    <i class="fa-solid fa-arrow-right action-arrow"></i>
+                </a>
+
+                <a href="{{ url_for('view_students') }}" class="action-card">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>View Student Records</span>
+                    <i class="fa-solid fa-arrow-right action-arrow"></i>
+                </a>
+
+                <a href="{{ url_for('room_management') }}" class="action-card">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Check Room Status</span>
+                    <i class="fa-solid fa-arrow-right action-arrow"></i>
+                </a>
+            </div>
+        </section>
+
+        <footer class="dashboard-footer">
+            Hostel Management System · Safe Stay, Better Tomorrow
+        </footer>
+    </main>
+
+</body>
+</html>

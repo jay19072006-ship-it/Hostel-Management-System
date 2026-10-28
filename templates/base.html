@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}HostelPro{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="dashboard-page">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-building-user"></i>
+            Hostel<span class="brand-highlight">Pro</span>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav class="side-links">
+            <a href="{{ url_for('home') }}">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </a>
+            <a href="{{ url_for('admission') }}">
+                <i class="fa-solid fa-user-plus"></i> Student Admission
+            </a>
+            <a href="{{ url_for('view_students') }}">
+                <i class="fa-solid fa-users"></i> Student Records
+            </a>
+            <a href="{{ url_for('home') }}">
+    <i class="fa-solid fa-bed"></i> Room Management
+</a>
+            <a href="{{ url_for('logout') }}">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <h1>{% block page_heading %}HostelPro{% endblock %}</h1>
+                <p>{% block page_subtitle %}{% endblock %}</p>
+            </div>
+            <span class="admin-badge">
+                <i class="fa-solid fa-circle-user"></i> Administrator
+            </span>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

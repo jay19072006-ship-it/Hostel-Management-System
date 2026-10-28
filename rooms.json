@@ -1,0 +1,82 @@
+[
+    {
+        "room_number": 101,
+        "occupied": true
+    },
+    {
+        "room_number": 102,
+        "occupied": true
+    },
+    {
+        "room_number": 103,
+        "occupied": false
+    },
+    {
+        "room_number": 104,
+        "occupied": false
+    },
+    {
+        "room_number": 105,
+        "occupied": true
+    },
+    {
+        "room_number": 106,
+        "occupied": false
+    },
+    {
+        "room_number": 107,
+        "occupied": true
+    },
+    {
+        "room_number": 108,
+        "occupied": true
+    },
+    {
+        "room_number": 109,
+        "occupied": false
+    },
+    {
+        "room_number": 110,
+        "occupied": false
+    },
+    {
+        "room_number": 111,
+        "occupied": false
+    },
+    {
+        "room_number": 112,
+        "occupied": true
+    },
+    {
+        "room_number": 113,
+        "occupied": false
+    },
+    {
+        "room_number": 114,
+        "occupied": false
+    },
+    {
+        "room_number": 115,
+        "occupied": false
+    },
+    {
+        "room_number": 116,
+        "occupied": false
+    },
+    {
+        "room_number": 117,
+        "occupied": false
+    },
+    {
+        "room_number": 118,
+        "occupied": true
+    },
+    {
+        "room_number": 119,
+        "occupied": false
+    },
+    {
+        "room_number": 120,
+        "occupied": false
+    }
+]
